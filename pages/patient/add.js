@@ -169,7 +169,7 @@ export default function AddPatient() {
           <h1 className="text-2xl sm:text-3xl font-bold text-indigo-900 mb-2 flex items-center gap-2 sm:gap-3">
             <span className="tooth-sparkle text-2xl sm:text-3xl">➕</span> Add New Patient
           </h1>
-          <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-8 font-medium">Enter the patient's information below</p>
+          <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-8 font-medium">Enter the patient&apos;s information below</p>
 
           <form onSubmit={handleSubmit}>
             {/* Image Upload */}
@@ -219,12 +219,12 @@ export default function AddPatient() {
               {/* Child Name */}
               <div className="fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="name">
-                  Child's Full Name * 👶
+                  Child&apos;s Full Name * 👶
                 </label>
                 <input
                   id="name"
                   type="text"
-                  placeholder="Enter child's full name"
+                  placeholder="Enter child&apos;s full name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
@@ -258,7 +258,7 @@ export default function AddPatient() {
                 <input
                   id="parent_name"
                   type="text"
-                  placeholder="Enter parent's full name"
+                  placeholder="Enter parent&apos;s full name"
                   value={formData.parent_name}
                   onChange={(e) => setFormData({ ...formData, parent_name: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
