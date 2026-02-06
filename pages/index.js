@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 
 export default function Home() {
   const router = useRouter();
@@ -70,6 +71,45 @@ export default function Home() {
               Found {filteredChildren.length} patient{filteredChildren.length === 1 ? '' : 's'} ✨
             </p>
           )}
+
+          {/* Export Button for admin */}
+          <div className="mt-4 flex justify-end">
+            <button
+              onClick={async () => {
+                try {
+                  // Use the current children list (all records)
+                  const rows = children.map(c => ({
+                    id: c.id,
+                    name: c.name,
+                    age: c.age,
+                    parent_name: c.parent_name,
+                    contact_details: c.contact_details,
+                    treatment: c.treatment || '',
+                    notes: c.notes || '',
+                    image_url: c.image_url || ''
+                  }));
+
+                  if (!rows || rows.length === 0) {
+                    alert('No patient data to export');
+                    return;
+                  }
+
+                  const XLSX = await import('xlsx');
+                  const ws = XLSX.utils.json_to_sheet(rows);
+                  const wb = XLSX.utils.book_new();
+                  XLSX.utils.book_append_sheet(wb, ws, 'Patients');
+                  // Trigger download in browser
+                  XLSX.writeFile(wb, 'smile-tracker-patients.xlsx');
+                } catch (err) {
+                  console.error('Export failed', err);
+                  alert('Export failed: ' + (err.message || err));
+                }
+              }}
+              className="ml-2 inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-3 rounded-lg shadow-md transition-all"
+            >
+              ⤓ Export Excel
+            </button>
+          </div>
         </div>
 
         {/* Children List */}
