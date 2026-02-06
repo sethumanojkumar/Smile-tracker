@@ -174,9 +174,9 @@ export default function Home() {
                         🦷 {child.treatment}
                       </p>
                     )}
-                    <p className="text-xs text-gray-600 truncate mt-1" title={child.parent_name}>
-                      Parent: {child.parent_name || '—'}
-                    </p>
+                    {child.op_number && <p className="text-xs text-gray-600 truncate mt-1" title={child.op_number}>
+                      OP number: {child.op_number || '—'}
+                    </p>}
                     <p className="text-xs text-indigo-400 mt-2 sm:mt-3 font-medium">
                       Click to view details →
                     </p>
