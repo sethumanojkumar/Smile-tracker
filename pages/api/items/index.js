@@ -18,21 +18,22 @@ export default async function handler(req, res) {
 
     case 'POST': {
       // Create a new child record
-      const { name, age, parent_name, contact_details, treatment, notes, image_url } = req.body;
+      const { name, age, parent_name, contact_details, treatment, notes, image_url, op_number } = req.body;
       
-      if (!name || !age || !parent_name || !contact_details) {
-        return res.status(400).json({ error: 'Name, age, parent name, and contact details are required' });
+      if (!name || !age || !contact_details) {
+        return res.status(400).json({ error: 'Name, age, and contact details are required' });
       }
 
       try {
         const newChild = await createChild({ 
           name, 
           age: Number.parseInt(age), 
-          parent_name, 
+          parent_name: parent_name || null, 
           contact_details,
           treatment,
           notes,
-          image_url 
+          image_url,
+          op_number: op_number || null,
         });
         res.status(201).json(newChild);
       } catch (error) {

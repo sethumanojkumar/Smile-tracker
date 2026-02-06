@@ -38,7 +38,8 @@ export default function Home() {
     const searchLower = searchTerm.toLowerCase();
     const filtered = children.filter(child => 
       child.name.toLowerCase().includes(searchLower) ||
-      child.parent_name.toLowerCase().includes(searchLower) ||
+      (child.parent_name || '').toLowerCase().includes(searchLower) ||
+      (child.op_number || '').toLowerCase().includes(searchLower) ||
       child.age.toString().includes(searchLower)
     );
     setFilteredChildren(filtered);
@@ -83,6 +84,7 @@ export default function Home() {
                     name: c.name,
                     age: c.age,
                     parent_name: c.parent_name,
+                    op_number: c.op_number || '',
                     contact_details: c.contact_details,
                     treatment: c.treatment || '',
                     notes: c.notes || '',
@@ -166,14 +168,14 @@ export default function Home() {
                     <h3 className="text-base sm:text-lg font-bold text-indigo-900 mb-1 truncate" title={child.name}>
                       {child.name}
                     </h3>
-                    <p className="text-sm sm:text-base text-indigo-600 font-semibold mb-2">Age: {child.age} years</p>
+                    <p className="text-sm sm:text-base text-indigo-600 font-semibold mb-2">Age: {child.age} years {child.op_number ? `· OP: ${child.op_number}` : ''}</p>
                     {child.treatment && (
                       <p className="text-xs text-green-700 font-medium mb-1 truncate bg-green-50 px-2 py-1 rounded-full mx-auto inline-block" title={child.treatment}>
                         🦷 {child.treatment}
                       </p>
                     )}
                     <p className="text-xs text-gray-600 truncate mt-1" title={child.parent_name}>
-                      Parent: {child.parent_name}
+                      Parent: {child.parent_name || '—'}
                     </p>
                     <p className="text-xs text-indigo-400 mt-2 sm:mt-3 font-medium">
                       Click to view details →

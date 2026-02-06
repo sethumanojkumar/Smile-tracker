@@ -166,7 +166,7 @@ export default function PatientDetail() {
             <div className="md:col-span-2 space-y-6 fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div>
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-indigo-900 mb-2">{patient.name}</h1>
-                <p className="text-xl sm:text-2xl text-indigo-600 font-semibold">{patient.age} years old</p>
+                <p className="text-xl sm:text-2xl text-indigo-600 font-semibold">{patient.age} years old {patient.op_number ? `· OP: ${patient.op_number}` : ''}</p>
               </div>
 
               <div className="space-y-3 sm:space-y-4">

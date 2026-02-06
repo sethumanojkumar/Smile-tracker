@@ -10,6 +10,7 @@ export default function EditPatient() {
     name: '', 
     age: '', 
     parent_name: '', 
+    op_number: '',
     contact_details: '',
     treatment: '',
     notes: '',
@@ -36,6 +37,7 @@ export default function EditPatient() {
           name: data.name,
           age: data.age,
           parent_name: data.parent_name,
+          op_number: data.op_number || '',
           contact_details: data.contact_details,
           treatment: data.treatment || '',
           notes: data.notes || '',
@@ -110,7 +112,8 @@ export default function EditPatient() {
   // Update patient
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.age || !formData.parent_name || !formData.contact_details) return;
+    // parent_name is optional now
+    if (!formData.name || !formData.age || !formData.contact_details) return;
 
     setSaving(true);
     const loadingToast = toast.loading('Updating patient record... 📝');
@@ -338,7 +341,7 @@ export default function EditPatient() {
               {/* Parent Name */}
               <div className="fade-in-up" style={{ animationDelay: '0.4s' }}>
                 <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="parent_name">
-                  Parent/Guardian Name * 👨‍👩‍👧
+                  Parent/Guardian Name (optional) 👨‍👩‍👧
                 </label>
                 <input
                   id="parent_name"
@@ -347,7 +350,21 @@ export default function EditPatient() {
                   value={formData.parent_name}
                   onChange={(e) => setFormData({ ...formData, parent_name: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
-                  required
+                />
+              </div>
+
+              {/* OP Number */}
+              <div className="fade-in-up" style={{ animationDelay: '0.45s' }}>
+                <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="op_number">
+                  OP Number (optional)
+                </label>
+                <input
+                  id="op_number"
+                  type="text"
+                  placeholder="Enter OP number"
+                  value={formData.op_number}
+                  onChange={(e) => setFormData({ ...formData, op_number: e.target.value })}
+                  className="w-full px-4 py-3 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                 />
               </div>
 
