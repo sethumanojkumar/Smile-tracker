@@ -16,11 +16,10 @@
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
-    "react-hot-toast": "^2.6.0"
-  },
-  "optionalDependencies": {
+    "react-hot-toast": "^2.6.0",
     "xlsx": "^0.18.5"
   },
+  
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "eslint": "^8",
