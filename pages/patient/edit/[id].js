@@ -198,7 +198,7 @@ export default function EditPatient() {
           🗑️ Remove Photo?
         </div>
         <p className="text-sm text-gray-600">
-          This will remove the patient's photo. You can upload a new one later.
+          This will remove the patient&apos;s photo. You can upload a new one later.
         </p>
         <div className="flex gap-2 mt-2">
           <button
@@ -256,7 +256,7 @@ export default function EditPatient() {
           <h1 className="text-2xl sm:text-3xl font-bold text-indigo-900 mb-2 flex items-center gap-2 sm:gap-3">
             <span className="tooth-sparkle text-2xl sm:text-3xl">✏️</span> Edit Patient
           </h1>
-          <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-8 font-medium">Update the patient's information</p>
+          <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-8 font-medium">Update the patient&apos;s information</p>
 
           <form onSubmit={handleSubmit}>
             {/* Image Upload */}
@@ -304,12 +304,12 @@ export default function EditPatient() {
               {/* Child Name */}
               <div className="fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <label className="block text-gray-800 text-sm font-bold mb-2" htmlFor="name">
-                  Child's Full Name * 👶
+                  Child&apos;s Full Name * 👶
                 </label>
                 <input
                   id="name"
                   type="text"
-                  placeholder="Enter child's full name"
+                  placeholder="Enter child&apos;s full name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
@@ -343,7 +343,7 @@ export default function EditPatient() {
                 <input
                   id="parent_name"
                   type="text"
-                  placeholder="Enter parent's full name"
+                  placeholder="Enter parent&apos;s full name"
                   value={formData.parent_name}
                   onChange={(e) => setFormData({ ...formData, parent_name: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
